@@ -1,0 +1,35 @@
+<fn-barra-superior></fn-barra-superior>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-right">
+            <button class="btn btn-primary mb-2" [routerLink]="['/funcionario/cadastrar']">Cadastrar</button>
+        </div>
+    </div>
+    <div class="table-responsive-sm">
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr class="text-center">
+                    <th scope="col">Código</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Cargo</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let funcionario of funcionarios">
+                <tr class="text-center">
+                    <th scope="row">{{ funcionario.id }}</th>
+                    <td>{{ funcionario.nome }}</td>
+                    <td>{{ funcionario.email }}</td>
+                    <td>{{ funcionario.cargo }}</td>
+                    <td>
+                        <button class="btn btn-info btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                        <button class="btn btn-danger btn-sm ml-2"><i class="fa fa-trash-o"
+                                aria-hidden="true"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

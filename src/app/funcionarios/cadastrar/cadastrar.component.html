@@ -1,0 +1,81 @@
+<fn-barra-superior></fn-barra-superior>
+
+<div class="container">
+    <h2 class="mb-3">Cadastrar Funcionário</h2>
+    <form [formGroup]="form" (submit)="cadastrarFuncionario()">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-dark" style="color: white; width: 80px;">Nome</span>
+            </div>
+            <input type="text" class="form-control" placeholder="Nome" formControlName="nome">
+        </div>
+        <ap-mensagem *ngIf="form.get('nome').errors?.required && form.get('nome').touched"
+            texto="Nome não pode ser nulo!">
+        </ap-mensagem>
+        <ap-mensagem *ngIf="form.get('nome').errors?.minlength" texto="Nome muito curto!"></ap-mensagem>
+        <ap-mensagem *ngIf="form.get('nome').errors?.maxlength" texto="Nome muito longo!"></ap-mensagem>
+
+        <div class="input-group mt-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-dark" style="color: white; width: 80px;">CPF</span>
+            </div>
+            <input type="text" class="form-control" placeholder="Somente números!" formControlName="cpf">
+        </div>
+        <ap-mensagem *ngIf="form.get('cpf').errors?.required && form.get('cpf').touched" texto="CPF não pode ser nulo!">
+        </ap-mensagem>
+        <ap-mensagem *ngIf="form.get('cpf').errors?.minlength" texto="Somente Números, cpf contém 11 caracteres!">
+        </ap-mensagem>
+        <ap-mensagem *ngIf="form.get('cpf').errors?.maxlength" texto="Somente Números, cpf contém 11 caracteres!">
+        </ap-mensagem>
+
+        <div class="input-group mt-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-dark" style="color: white; width: 80px;">E-mail</span>
+            </div>
+            <input type="text" class="form-control" placeholder="exemplo@exemplo.com" formControlName="email">
+        </div>
+        <ap-mensagem *ngIf="form.get('email').errors?.required && form.get('email').touched"
+            texto="E-mail não pode ser nulo!"></ap-mensagem>
+        <ap-mensagem *ngIf="form.get('email').errors?.email" texto="E-mail inválido!"></ap-mensagem>
+        <ap-mensagem *ngIf="form.get('email').errors?.maxlength" texto="E-mail muito longo!"></ap-mensagem>
+
+        <div class="input-group mt-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-dark" style="color: white; width: 80px;">Telefone</span>
+            </div>
+            <input type="text" class="form-control" placeholder="Telefone" formControlName="telefone">
+        </div>
+        <ap-mensagem *ngIf="form.get('telefone').errors?.required && form.get('telefone').touched"
+            texto="Telefone não pode ser nulo!"></ap-mensagem>
+
+        <div class="input-group mt-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-dark" style="color: white; width: 80px;">Cargo</span>
+            </div>
+            <select name="cargos" class="custom-select" formControlName="cargo">
+                <option value="GERENTE_DE_PROJETOS">GERENTE_DE_PROJETOS</option>
+                <option selected value="DESENVOLVEDOR_I">DESENVOLVEDOR_I</option>
+                <option value="DESENVOLVEDOR_II">DESENVOLVEDOR_II</option>
+                <option value="DESENVOLVEDOR_III">DESENVOLVEDOR_III</option>
+            </select>
+        </div>
+        <ap-mensagem *ngIf="form.get('cargo').errors?.required && form.get('cargo').touched"
+            texto="Cargo não pode ser nulo!"></ap-mensagem>
+
+        <div class="input-group mt-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-dark" style="color: white; width: 80px;">Salário</span>
+            </div>
+            <input type="number" class="form-control" placeholder="Salário" formControlName="salario">
+        </div>
+        <ap-mensagem *ngIf="form.get('salario').errors?.required && form.get('salario').touched"
+            texto="Salário não pode ser nulo!"></ap-mensagem>
+
+        <div class="row mt-3">
+            <div class="col-12 text-right">
+                <button [disabled]="form.invalid || form.pending" class="btn btn-primary">Cadastrar</button>
+                <button class="btn btn-danger ml-1" [routerLink]="['/']">Cancelar</button>
+            </div>
+        </div>
+    </form>
+</div>
